@@ -4,6 +4,7 @@ import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.OnConflictStrategy
 import androidx.room.Query
+import kotlinx.coroutines.flow.Flow
 
 /**
  * SQLクエリを指定してメソッド呼び出しに関連付けるIF。
@@ -16,7 +17,7 @@ import androidx.room.Query
 @Dao
 interface WordDAO {
     @Query("SELECT * FROM word_table ORDER BY word ASC")
-    fun getAlphabetizedWords(): List<WordEntity>
+    fun getAlphabetizedWords(): Flow<List<WordEntity>>
     //OnConflictStrategy：競合戦略の指定　上書きとかがある
     @Insert(onConflict = OnConflictStrategy.IGNORE)
     suspend fun insert(word: WordEntity)
