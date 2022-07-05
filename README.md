@@ -1,2 +1,3 @@
 # practice_android_kotlin
 Kotlin練習用
+MVVMモデル練習とかします
