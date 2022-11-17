@@ -8,8 +8,10 @@ import com.example.practiceandroid.infra.word.WordDAO
 import com.example.practiceandroid.infra.word.WordEntity
 
 @Database(
+    //entityの一覧をここに書く
     entities = arrayOf(WordEntity::class),
     version = 1,
+    //データベースの以降を範囲外にする
     exportSchema = false
 )
 public abstract class AppDatabase : RoomDatabase() {
@@ -23,7 +25,7 @@ public abstract class AppDatabase : RoomDatabase() {
             return INSTANCE ?: synchronized(this) {
                 val instance = Room.databaseBuilder(
                     context.applicationContext,
-                    AppDatabase::class.java
+                    AppDatabase::class.java,
                 "word_database"
                 ).build()
                 INSTANCE = instance
